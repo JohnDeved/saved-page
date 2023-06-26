@@ -19,3 +19,8 @@ pnpm-debug.log*
 
 # macOS-specific files
 .DS_Store
+
+# ignore everything in ./styled-system except the "solid-jsx" folder
+/styled-system/*
+!/styled-system/solid-jsx
+```

@@ -1,17 +1,20 @@
 ---
-import React from '../components/React'
-import Solid from '../components/Solid'
+import React from "../components/React";
+import Solid from "../components/Solid";
 ---
 
 <!DOCTYPE html>
 <html lang="en">
-<head>
-	<meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>Document</title>
-</head>
-<body>
-	<React client:load />
-	<Solid client:idle />
-</body>
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Document</title>
+	</head>
+	<body>
+		<React client:load />
+		<Solid client:idle />
+	</body>
+	<style is:global>
+		@layer reset, base, tokens, recipes, utilities;
+	</style>
 </html>
