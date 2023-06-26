@@ -1,7 +1,9 @@
 # saved-page
 
 - focus on framework agnostic libs
-- framework: [astro](https://astro.build/) (try mixing react and solid)
+- framework: [astro](https://astro.build/) (try mixing react and solidjs in component islands just to see how that works)
+  - static cloudflare pages site 
+  - SPA like page navigation with [turbo](https://www.maxiferreira.com/blog/astro-turbo-persistent-islands/)
 - ui lib: [panda](https://panda-css.com/)
 - image list: [egjs-infinitegrid](https://naver.github.io/egjs-infinitegrid/)
 - gallery items: [swiperjs](https://swiperjs.com/)
