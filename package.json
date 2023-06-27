@@ -5,9 +5,10 @@
   "scripts": {
     "dev": "astro dev",
     "start": "astro dev",
-    "build": "panda codegen && astro build",
+    "build": "npm run panda:codegen --clean && astro build",
     "preview": "astro preview",
-    "astro": "astro"
+    "astro": "astro",
+    "panda:codegen": "node ./scripts/pandaCodegen.js"
   },
   "dependencies": {
     "@astrojs/react": "^2.2.1",

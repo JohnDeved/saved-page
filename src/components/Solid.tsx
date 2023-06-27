@@ -1,7 +1,7 @@
 /** @jsxImportSource solid-js */
 
 import { createSignal } from "solid-js"
-import { Box } from "../../styled-system/solid-jsx"
+import { Box } from "../../styled-system/solid"
 
 export default function Solid() {
   const [count, setCount] = createSignal(0)

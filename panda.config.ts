@@ -1,4 +1,6 @@
 import { defineConfig, defineGlobalStyles } from "@pandacss/dev"
+import * as c from './panda.config.json'
+const { jsxFramework } = c as ReturnType<typeof defineConfig>
 
 export default defineConfig({
     // Whether to use css reset
@@ -29,5 +31,5 @@ export default defineConfig({
     // The output directory for your css system
     outdir: "styled-system",
     
-    jsxFramework: "react"
+    jsxFramework
 })
