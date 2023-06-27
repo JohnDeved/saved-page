@@ -15,16 +15,12 @@ export default defineConfig({
   // Useful for theme customization
   theme: {
     extend: {},
-    tokens: {
-      fonts: {
-        body: { value: 'mgramm' },
-      },
-    },
   },
 
   globalCss: defineGlobalStyles({
     body: {
-      fontFamily: 'body',
+      fontFamily: 'mgramm',
+      bg: 'black',
     },
   }),
 

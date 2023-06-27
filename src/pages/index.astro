@@ -1,7 +1,7 @@
 ---
-import React from '../components/React'
-import Solid from '../components/Solid'
-import stored from '../../save/stored.json'
+import { Hero } from '../components/react/Hero'
+import { MediaList } from '../components/react/MediaList'
+import { stored } from './stored.json'
 ---
 
 <!DOCTYPE html>
@@ -12,11 +12,10 @@ import stored from '../../save/stored.json'
       <title>saved {stored.length}</title>
     </head>
     <body>
-      <React client:load/>
-      <Solid client:idle/>
-      {stored.slice(0, 10).map(store => (
-        <p>{store.title}</p>
-      ))}
+      <Hero/>
+      <div class="test">
+        <MediaList prefetchedItems={stored.slice(0, 20)} client:load/>
+      </div>
     </body>
     <style is:global>
 			@layer reset, base, tokens, recipes, utilities;
