@@ -1,9 +1,12 @@
 /** @jsxImportSource solid-js */
 
-import { createSignal } from "solid-js"
-import { Box } from "../../styled-system/solid"
+import type { Component } from 'solid-js'
+import { createSignal } from 'solid-js'
+import { Box } from '../../styled-system/solid'
 
-export default function Solid() {
+const Solid: Component = () => {
   const [count, setCount] = createSignal(0)
   return <Box bg="lightgreen" onClick={() => setCount(count() + 1)}>Hello from Solid {count()}</Box>
 }
+
+export default Solid

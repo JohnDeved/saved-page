@@ -1,6 +1,6 @@
 /** @jsxImportSource react */
 
-import { signal } from "@preact/signals-react"
+import { signal } from '@preact/signals-react'
 import { Box } from '../../styled-system/react'
 
 const count = signal(0)
