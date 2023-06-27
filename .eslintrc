@@ -1,8 +1,24 @@
 {
   "extends": [
-      "./node_modules/@undefined/lint/.eslintrc"
+      "./node_modules/@undefined/lint/.eslintrc",
+      "plugin:astro/recommended"
+  ],
+  "overrides": [
+    {
+      "files": ["*.astro"],
+      "parser": "astro-eslint-parser",
+      "parserOptions": {
+        "parser": "@typescript-eslint/parser",
+        "extraFileExtensions": [".astro"]
+      },
+      "rules": {
+        "no-tabs": "off",
+        "react/no-unknown-property": "off",
+        "astro/semi": ["error", "never"]
+      }
+    }
   ],
   "rules": {
-    "react/react-in-jsx-scope": "off" 
+    "react/react-in-jsx-scope": "off"
   }
 }

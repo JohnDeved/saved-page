@@ -1,29 +1,29 @@
 ---
-import React from "../components/React";
-import Solid from "../components/Solid";
+import React from '../components/React'
+import Solid from '../components/Solid'
 ---
 
 <!DOCTYPE html>
-<html lang="en">
-	<head>
-		<meta charset="UTF-8" />
-		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-		<title>Document</title>
-	</head>
-	<body>
-		<React client:load />
-		<Solid client:idle />
-	</body>
-	<style is:global>
-		@layer reset, base, tokens, recipes, utilities;
-	</style>
-	<style is:global>
-		@font-face {
-			font-family: 'mgramm';
-			src: url('/fonts/monogramextended.woff2') format('woff2');
-			font-weight: 500;
-			font-style: normal;
-			font-display: swap;
-		}
-	</style>
-</html>
+  <html lang="en">
+    <head>
+      <meta charset="UTF-8"/>
+      <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+      <title>Document</title>
+    </head>
+    <body>
+      <React client:load/>
+      <Solid client:idle/>
+    </body>
+    <style is:global>
+			@layer reset, base, tokens, recipes, utilities;
+    </style>
+    <style is:global>
+			@font-face {
+				font-family: 'mgramm';
+				src: url('/fonts/monogramextended.woff2') format('woff2');
+				font-weight: 500;
+				font-style: normal;
+				font-display: swap;
+			}
+    </style>
+  </html>
