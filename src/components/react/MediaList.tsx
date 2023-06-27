@@ -7,13 +7,18 @@ import { css } from '../../../styled-system/css'
 
 const MediaContainer = ({ item }: { item: Stored }) => {
   const cdnUrl = Array.isArray(item.cdnUrl) ? item.cdnUrl[0] : item.cdnUrl
-  const pixelUrl = `${cdnUrl.replace('cdn.discordapp.com', 'media.discordapp.net')}?format=jpeg&height=1&width=1`
+  const mediaUrl = cdnUrl.replace('cdn.discordapp.com', 'media.discordapp.net')
+  // const pixelUrl = `${mediaUrl}?format=jpeg&height=1&width=1`
 
-  const thumbnailWidth = 100
-  const thumbnailHeight = Math.round((thumbnailWidth / item.width) * item.height)
-  const thumbnailUrl = `${cdnUrl.replace('cdn.discordapp.com', 'media.discordapp.net')}?format=jpeg&height=${thumbnailHeight}&width=${thumbnailWidth}`
+  // height or width is 1000px, whichever is smaller
+  const maxDimension = Math.min(1200, Math.max(item.height, item.width))
+  const thumbHeight = item.height > item.width ? maxDimension : Math.round(item.height * (maxDimension / item.width))
+  const thumbWidth = item.width > item.height ? maxDimension : Math.round(item.width * (maxDimension / item.height))
+
+  const thumbnailUrl = `${mediaUrl}?format=jpeg&height=${thumbHeight}&width=${thumbWidth}`
 
   const isVideo = cdnUrl.endsWith('.mp4')
+  const isGif = cdnUrl.endsWith('.gif')
 
   // base64 data uri with width and height and pixelUlr background
   const dataSrc = `data:image/svg+xml;base64,${btoa(`<svg xmlns="http://www.w3.org/2000/svg" width="${item.width}" height="${item.height}"></svg>`)}`
@@ -53,7 +58,7 @@ const MediaContainer = ({ item }: { item: Stored }) => {
               height: '100%',
             })}
             loading="lazy"
-            src={cdnUrl}
+            src={isGif ? mediaUrl : thumbnailUrl}
           />
           )}
     </div>
