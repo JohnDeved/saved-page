@@ -19,18 +19,27 @@ const MediaContainer = ({ item }: { item: Stored }) => {
   const dataSrc = `data:image/svg+xml;base64,${btoa(`<svg xmlns="http://www.w3.org/2000/svg" width="${item.width}" height="${item.height}"></svg>`)}`
 
   return (
-    <div style={{
-      backgroundImage: `url(${pixelUrl})`,
-      backgroundPosition: 'center',
-      backgroundSize: 'cover',
-      backgroundRepeat: 'no-repeat',
-    }}
-    >
+    <div>
       <img width={`${item.width}px`} height={`${item.height}px`} src={dataSrc}/>
       {isVideo
         ? (
-          <></>
-          // <video className={css({ top: 0, left: 0, pos: 'absolute' })} src={cdnUrl} height={item.height} width={item.width} muted autoPlay loop playsInline/>
+          <video
+            className={css({
+              top: 0,
+              left: 0,
+              pos: 'absolute',
+              objectFit: 'cover',
+              objectPosition: 'center',
+              width: '100%',
+              height: '100%',
+            })}
+            src={cdnUrl}
+            height={item.height}
+            width={item.width}
+            muted
+            autoPlay
+            loop
+          />
           )
         : (
           <img
@@ -38,8 +47,10 @@ const MediaContainer = ({ item }: { item: Stored }) => {
               top: 0,
               left: 0,
               pos: 'absolute',
-              height: '100%',
+              objectFit: 'cover',
+              objectPosition: 'center',
               width: '100%',
+              height: '100%',
             })}
             loading="lazy"
             src={cdnUrl}
