@@ -1,12 +1,9 @@
 /** @jsxImportSource react */
+import { MasonryInfiniteGrid } from '@egjs/react-infinitegrid'
 import { useState } from 'react'
 import { Box } from '../../../styled-system/react'
 import type { Stored } from '../../pages/stored.json'
 import { css } from '../../../styled-system/css'
-import * as shit from '@egjs/react-infinitegrid'
-
-// fuck my life, its not working any other way
-const MasonryInfiniteGrid: typeof shit.MasonryInfiniteGrid = (shit as any).default.MasonryInfiniteGrid
 
 const MediaContainer = ({ item }: { item: Stored }) => {
   const cdnUrl = Array.isArray(item.cdnUrl) ? item.cdnUrl[0] : item.cdnUrl
@@ -79,8 +76,9 @@ export const MediaList: React.FC<{ prefetchedItems: Stored[] }> = ({ prefetchedI
   const [items, setItems] = useState(prefetchedItems)
 
   return (
+  // <Container>
     <MasonryInfiniteGrid
-      // container
+        // container
       // useFirstRender
       percentage
       gap={5}
@@ -106,5 +104,6 @@ export const MediaList: React.FC<{ prefetchedItems: Stored[] }> = ({ prefetchedI
         </Box>
       ))}
     </MasonryInfiniteGrid>
+  // </Container>
   )
 }
