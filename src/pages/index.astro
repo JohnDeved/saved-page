@@ -1,6 +1,7 @@
 ---
 import React from '../components/React'
 import Solid from '../components/Solid'
+import stored from '../../save/stored.json'
 ---
 
 <!DOCTYPE html>
@@ -8,11 +9,14 @@ import Solid from '../components/Solid'
     <head>
       <meta charset="UTF-8"/>
       <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-      <title>Document</title>
+      <title>saved {stored.length}</title>
     </head>
     <body>
       <React client:load/>
       <Solid client:idle/>
+      {stored.slice(0, 10).map(store => (
+        <p>{store.title}</p>
+      ))}
     </body>
     <style is:global>
 			@layer reset, base, tokens, recipes, utilities;

@@ -14,6 +14,8 @@
       "rules": {
         "no-tabs": "off",
         "react/no-unknown-property": "off",
+        "react/jsx-key": "off",
+
         "astro/semi": ["error", "never"]
       }
     }
