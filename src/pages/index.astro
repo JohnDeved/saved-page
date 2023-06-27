@@ -14,7 +14,7 @@ import { stored } from './stored.json'
     <body>
       <Hero/>
       <div class="test">
-        <MediaList prefetchedItems={stored.slice(0, 20)} client:load/>
+        <MediaList prefetchedItems={stored.slice(0, 20)} client:only="react"/>
       </div>
     </body>
     <style is:global>
