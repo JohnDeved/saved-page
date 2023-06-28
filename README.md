@@ -22,3 +22,7 @@ as an experiment, focus on framework agnostic libs for max flexibility
 2. panda JSX components didn't work out of the box with react AND solid together at the same time.
     - issue URL: https://github.com/chakra-ui/panda/discussions/848
     - workaround: created a hacky [script](scripts/pandaCodegen.js) that generates solid and react panda components in the same project
+
+# thoughts
+- something like [TanStack/bling](https://github.com/TanStack/bling)https://github.com/TanStack/bling would integrate nicely into Astro. [Qwik does this](https://qwik.builder.io/docs/server$/)https://qwik.builder.io/docs/server$/.
+- astro adapter for [Qwik Components](https://qwik.builder.io/docs/components/overview/)https://qwik.builder.io/docs/components/overview/ would be nice.
