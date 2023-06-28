@@ -24,8 +24,8 @@ const MediaContainer = ({ item }: { item: Stored }) => {
   const dataSrc = `data:image/svg+xml;base64,${btoa(`<svg xmlns="http://www.w3.org/2000/svg" width="${item.width}" height="${item.height}"></svg>`)}`
 
   return (
-    <div>
-      <img width={`${item.width}px`} height={`${item.height}px`} src={dataSrc}/>
+    <Box pos="relative" className="group">
+      <img width={`${item.width}px`} height={`${item.height}px`} src={dataSrc} alt="preload"/>
       {isVideo
         ? (
           <video
@@ -33,7 +33,7 @@ const MediaContainer = ({ item }: { item: Stored }) => {
               top: 0,
               left: 0,
               pos: 'absolute',
-              objectFit: 'cover',
+              objectFit: 'contain',
               objectPosition: 'center',
               width: '100%',
               height: '100%',
@@ -52,16 +52,54 @@ const MediaContainer = ({ item }: { item: Stored }) => {
               top: 0,
               left: 0,
               pos: 'absolute',
-              objectFit: 'cover',
+              objectFit: 'contain',
               objectPosition: 'center',
               width: '100%',
               height: '100%',
             })}
             loading="lazy"
+            alt={item.title}
             src={isGif ? mediaUrl : thumbnailUrl}
           />
           )}
-    </div>
+      <Box
+        _groupHover={{
+          opacity: 1,
+        }}
+        opacity={0}
+        transition=".25s"
+        pos="absolute"
+        color="white"
+        bottom="0"
+        w="100%"
+        backdropFilter="blur(5px)"
+        padding="20px"
+        fontSize="3xl"
+        lineHeight={0.6}
+        border="3px solid rgba(255,255,255,.75)"
+        bg="rgba(0,0,0,.5)"
+        _hover={{ bg: 'rgba(0,0,0,.75)' }}
+        display="flex"
+        justifyContent="space-between"
+        alignItems="center"
+        gap="20px"
+        cursor="pointer"
+      >
+        <Box
+          _groupHover={{ transform: 'translateX(0)' }}
+          transform="translateY(5px)"
+          transition=".25s"
+        >{item.title}
+        </Box>
+        <Box
+          fontSize="5xl"
+          _groupHover={{ transform: 'translateX(0)' }}
+          transform="translateX(-5px)"
+          transition=".25s"
+        >→
+        </Box>
+      </Box>
+    </Box>
   )
 }
 
@@ -76,10 +114,7 @@ export const MediaList: React.FC<{ prefetchedItems: Stored[] }> = ({ prefetchedI
   const [items, setItems] = useState(prefetchedItems)
 
   return (
-  // <Container>
     <MasonryInfiniteGrid
-        // container
-      // useFirstRender
       percentage
       gap={5}
       column={3}
@@ -104,6 +139,5 @@ export const MediaList: React.FC<{ prefetchedItems: Stored[] }> = ({ prefetchedI
         </Box>
       ))}
     </MasonryInfiniteGrid>
-  // </Container>
   )
 }
