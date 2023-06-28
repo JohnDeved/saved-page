@@ -64,7 +64,7 @@ const MediaContainer = ({ item }: { item: Stored }) => {
             height="100%"
             loading="lazy"
             effect="opacity"
-            visibleByDefault={isGif}
+            // visibleByDefault={isGif}
             src={isGif ? mediaUrl : thumbnailUrl}
           // placeholderSrc={pixelUrl}
             alt={item.title}

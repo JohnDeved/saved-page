@@ -1,6 +1,7 @@
 ---
 import { Hero } from '../components/react/Hero'
 import { MediaList } from '../components/react/MediaList'
+import { Navigation } from '../components/react/Navigation'
 import { stored } from './stored.json'
 ---
 
@@ -13,9 +14,8 @@ import { stored } from './stored.json'
     </head>
     <body>
       <Hero/>
-      <div class="test">
-        <MediaList prefetchedItems={stored.slice(0, 20)} client:only="react"/>
-      </div>
+      <Navigation/>
+      <MediaList prefetchedItems={stored.slice(0, 20)} client:only="react"/>
     </body>
     <style is:global>
 			@layer reset, base, tokens, recipes, utilities;
