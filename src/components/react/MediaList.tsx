@@ -118,6 +118,7 @@ export const MediaList: React.FC<{ prefetchedItems: Stored[] }> = ({ prefetchedI
       percentage
       gap={5}
       column={3}
+      threshold={5000}
       onRequestAppend={async (e) => {
         e.wait()
         const items = await getItems()
