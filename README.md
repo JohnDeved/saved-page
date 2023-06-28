@@ -24,5 +24,5 @@ as an experiment, focus on framework agnostic libs for max flexibility
     - workaround: created a hacky [script](scripts/pandaCodegen.js) that generates solid and react panda components in the same project
 
 # thoughts
-- something like [TanStack/bling](https://github.com/TanStack/bling)https://github.com/TanStack/bling would integrate nicely into Astro. [Qwik does this](https://qwik.builder.io/docs/server$/)https://qwik.builder.io/docs/server$/.
-- astro adapter for [Qwik Components](https://qwik.builder.io/docs/components/overview/)https://qwik.builder.io/docs/components/overview/ would be nice.
+- something like [TanStack/bling](https://github.com/TanStack/bling)https://github.com/TanStack/bling would integrate nicely into Astro. [Qwik does this](https://qwik.builder.io/docs/server$/).
+- astro adapter for [Qwik Components](https://qwik.builder.io/docs/components/overview/) would be nice.
