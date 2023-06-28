@@ -1,22 +1,22 @@
 /** @jsxImportSource react */
 
 import { css } from '../../../styled-system/css'
-import { Container } from '../../../styled-system/react'
+import { Box } from '../../../styled-system/react'
 
 export const Navigation: React.FC = () => {
   // needs 2 buttons: "new" and "random"
   return (
-    <Container
+    <Box
       py="15px"
       display="flex"
-      gap={3}
-      // sticky
-      top={0}
-      bg="rgba(0,0,0,0.8)"
       justifyContent="center"
       alignItems="center"
-      position="sticky"
+      gap={3}
+      bg="rgba(0,0,0,0.8)"
       backdropFilter="blur(5px)"
+      // sticky
+      top={0}
+      position="sticky"
       zIndex={1}
     >
       <button className={css({
@@ -37,6 +37,6 @@ export const Navigation: React.FC = () => {
       })}
       >random
       </button>
-    </Container>
+    </Box>
   )
 }

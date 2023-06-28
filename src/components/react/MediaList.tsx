@@ -28,48 +28,39 @@ const MediaContainer = ({ item }: { item: Stored }) => {
   return (
     <Box pos="relative" className="group" style={{ backgroundImage: `url(${pixelUrl})` }}>
       <img src={dataSrc} alt="preload"/>
-      {isVideo
-        ? (
-          <LazyLoadComponent>
-            <video
-              className={css({
-                top: 0,
-                left: 0,
-                pos: 'absolute',
-                objectFit: 'cover',
-                objectPosition: 'center',
-                width: '100%',
-                height: '100%',
-              })}
-              src={cdnUrl}
-              height={item.height}
-              width={item.width}
-              muted
-              autoPlay
-              loop
+      <Box pos="absolute" top={0} left={0} width="100%" height="100%">
+        {isVideo
+          ? (
+            <LazyLoadComponent
+              threshold={0}
+              delayMethod="debounce"
+            >
+              <video
+                className={css({
+                  top: 0,
+                  left: 0,
+                  pos: 'absolute',
+                  objectFit: 'cover',
+                  objectPosition: 'center',
+                })}
+                src={cdnUrl}
+                muted
+                autoPlay
+                loop
+              />
+            </LazyLoadComponent>
+            )
+          : (
+            <LazyLoadImage
+              threshold={0}
+              delayMethod="debounce"
+              effect="opacity"
+              height="100%"
+              src={isGif ? mediaUrl : thumbnailUrl}
+              alt={item.title}
             />
-          </LazyLoadComponent>
-          )
-        : (
-          <LazyLoadImage
-            className={css({
-              top: 0,
-              left: 0,
-              pos: 'absolute',
-              objectFit: 'cover',
-              objectPosition: 'center',
-              width: '100%',
-              height: '100%',
-            })}
-            height="100%"
-            loading="lazy"
-            effect="opacity"
-            // visibleByDefault={isGif}
-            src={isGif ? mediaUrl : thumbnailUrl}
-          // placeholderSrc={pixelUrl}
-            alt={item.title}
-          />
-          )}
+            )}
+      </Box>
       <Box
         _groupHover={{
           opacity: 1,
