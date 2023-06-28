@@ -22,7 +22,7 @@ export const Navigation: React.FC = () => {
       <button className={css({
         color: 'white',
         fontSize: 'xl',
-        padding: '15px 20px',
+        padding: '10px 15px',
         border: '3px solid #fff',
       })}
       >new
@@ -30,7 +30,7 @@ export const Navigation: React.FC = () => {
       <button className={css({
         color: 'white',
         fontSize: 'xl',
-        padding: '15px',
+        padding: '10px 15px',
         border: '3px solid #fff',
       })}
       >random
