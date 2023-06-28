@@ -4,11 +4,13 @@ import { useState } from 'react'
 import { Box } from '../../../styled-system/react'
 import type { Stored } from '../../pages/stored.json'
 import { css } from '../../../styled-system/css'
+import { LazyLoadImage, LazyLoadComponent } from 'react-lazy-load-image-component'
+import 'react-lazy-load-image-component/src/effects/opacity.css'
 
 const MediaContainer = ({ item }: { item: Stored }) => {
   const cdnUrl = Array.isArray(item.cdnUrl) ? item.cdnUrl[0] : item.cdnUrl
   const mediaUrl = cdnUrl.replace('cdn.discordapp.com', 'media.discordapp.net')
-  // const pixelUrl = `${mediaUrl}?format=jpeg&height=1&width=1`
+  const pixelUrl = `${mediaUrl}?format=jpeg&height=1&width=1`
 
   // height or width is 1000px, whichever is smaller
   const maxDimension = Math.min(1200, Math.max(item.height, item.width))
@@ -24,42 +26,47 @@ const MediaContainer = ({ item }: { item: Stored }) => {
   const dataSrc = `data:image/svg+xml;base64,${btoa(`<svg xmlns="http://www.w3.org/2000/svg" width="${item.width}" height="${item.height}"></svg>`)}`
 
   return (
-    <Box pos="relative" className="group">
-      <img width={`${item.width}px`} height={`${item.height}px`} src={dataSrc} alt="preload"/>
+    <Box pos="relative" className="group" style={{ backgroundImage: `url(${pixelUrl})` }}>
+      <img src={dataSrc} alt="preload"/>
       {isVideo
         ? (
-          <video
-            className={css({
-              top: 0,
-              left: 0,
-              pos: 'absolute',
-              objectFit: 'contain',
-              objectPosition: 'center',
-              width: '100%',
-              height: '100%',
-            })}
-            src={cdnUrl}
-            height={item.height}
-            width={item.width}
-            muted
-            autoPlay
-            loop
-          />
+          <LazyLoadComponent>
+            <video
+              className={css({
+                top: 0,
+                left: 0,
+                pos: 'absolute',
+                objectFit: 'cover',
+                objectPosition: 'center',
+                width: '100%',
+                height: '100%',
+              })}
+              src={cdnUrl}
+              height={item.height}
+              width={item.width}
+              muted
+              autoPlay
+              loop
+            />
+          </LazyLoadComponent>
           )
         : (
-          <img
+          <LazyLoadImage
             className={css({
               top: 0,
               left: 0,
               pos: 'absolute',
-              objectFit: 'contain',
+              objectFit: 'cover',
               objectPosition: 'center',
               width: '100%',
               height: '100%',
             })}
+            height="100%"
             loading="lazy"
-            alt={item.title}
+            effect="opacity"
             src={isGif ? mediaUrl : thumbnailUrl}
+          // placeholderSrc={pixelUrl}
+            alt={item.title}
           />
           )}
       <Box
