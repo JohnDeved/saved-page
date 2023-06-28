@@ -2,9 +2,9 @@
 
 as an experiment, focus on framework agnostic libs for max flexibility
 - [agnostic] framework: [astro](https://astro.build/) 
-  - mixing react and solidjs in component islands to see how that works
-  - on react side, make use of [preact signals](https://github.com/preactjs/signals/blob/main/packages/react/README.md#react-integration) [doc](https://preactjs.com/guide/v10/signals/)
-  - static cloudflare pages site 
+  - use [react](https://react.dev/) and [solidjs](https://www.solidjs.com/) on the same page using [astro islands](https://docs.astro.build/en/concepts/islands/)
+  - on react side, make use of [preact signals](https://github.com/preactjs/signals/blob/main/packages/react/README.md#react-integration) [[doc]](https://preactjs.com/guide/v10/signals/)
+  - hosting as static [cloudflare pages](https://pages.cloudflare.com/) site
   - SPA like page navigation with [quicklink](https://github.com/GoogleChromeLabs/quicklink) (will be possible [out of the box](https://github.com/withastro/roadmap/issues/532) in the future)
 - [agnostic] ui lib: [panda](https://panda-css.com/)
 - [agnostic] image list: [egjs-infinitegrid](https://naver.github.io/egjs-infinitegrid/)
