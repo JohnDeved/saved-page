@@ -21,8 +21,7 @@ export const Navigation: React.FC = () => {
     >
       <button className={css({
         color: 'white',
-        fontSize: '4xl',
-        lineHeight: 0.6,
+        fontSize: 'xl',
         padding: '15px 20px',
         border: '3px solid #fff',
       })}
@@ -30,8 +29,7 @@ export const Navigation: React.FC = () => {
       </button>
       <button className={css({
         color: 'white',
-        fontSize: '4xl',
-        lineHeight: 0.6,
+        fontSize: 'xl',
         padding: '15px',
         border: '3px solid #fff',
       })}

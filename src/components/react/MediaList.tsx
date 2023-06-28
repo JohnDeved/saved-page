@@ -73,8 +73,7 @@ const MediaContainer = ({ item }: { item: Stored }) => {
         w="100%"
         backdropFilter="blur(5px)"
         padding="20px"
-        fontSize="3xl"
-        lineHeight={0.6}
+        fontSize="xl"
         border="3px solid rgba(255,255,255,.75)"
         bg="rgba(0,0,0,.5)"
         _hover={{ bg: 'rgba(0,0,0,.75)' }}
@@ -91,7 +90,7 @@ const MediaContainer = ({ item }: { item: Stored }) => {
         >{item.title}
         </Box>
         <Box
-          fontSize="5xl"
+          fontSize="4xl"
           _groupHover={{ transform: 'translateX(0)' }}
           transform="translateX(-5px)"
           transition=".25s"
