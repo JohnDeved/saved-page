@@ -1,0 +1,11 @@
+---
+import { Content as Readme } from '../../README.md'
+import Layout from '../layouts/Layout.astro'
+import { container } from '../../styled-system/patterns/container'
+---
+
+  <Layout>
+    <div class={container()}>
+      <Readme/>
+    </div>
+  </Layout>

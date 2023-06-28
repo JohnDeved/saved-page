@@ -2,32 +2,12 @@
 import { Hero } from '../components/react/Hero'
 import { MediaList } from '../components/react/MediaList'
 import { Navigation } from '../components/react/Navigation'
+import Layout from '../layouts/Layout.astro'
 import { stored } from './stored.json'
 ---
 
-<!DOCTYPE html>
-  <html lang="en">
-    <head>
-      <meta charset="UTF-8"/>
-      <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-      <title>saved {stored.length}</title>
-    </head>
-    <body>
-      <Hero/>
-      <Navigation/>
-      <MediaList prefetchedItems={stored.slice(0, 10)} client:only="react"/>
-    </body>
-    <style is:global>
-			@layer reset, base, tokens, recipes, utilities;
-    </style>
-    <style is:global>
-			@font-face {
-				font-family: 'mgramm';
-        font-size-adjust: ic-height 1;
-        size-adjust: 150%;
-				src: url('/fonts/monogramextended.woff2') format('woff2');
-				font-weight: 500;
-				font-style: normal;
-			}
-    </style>
-  </html>
+  <Layout>
+    <Hero/>
+    <Navigation/>
+    <MediaList prefetchedItems={stored.slice(0, 10)} client:only="react"/>
+  </Layout>

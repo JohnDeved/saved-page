@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+  <html lang="en">
+    <head>
+      <meta charset="UTF-8"/>
+      <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+      <!-- <title>saved {stored.length}</title> -->
+    </head>
+    <body>
+      <slot/>
+    </body>
+    <style is:global>
+			@layer reset, base, tokens, recipes, utilities;
+    </style>
+    <style is:global>
+			@font-face {
+				font-family: 'mgramm';
+        font-size-adjust: ic-height 1;
+        size-adjust: 150%;
+				src: url('/fonts/monogramextended.woff2') format('woff2');
+				font-weight: 500;
+				font-style: normal;
+			}
+    </style>
+  </html>
