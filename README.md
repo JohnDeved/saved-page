@@ -5,7 +5,7 @@
   - on react side, make use of [preact signals](https://github.com/preactjs/signals/blob/main/packages/react/README.md#react-integration) [doc](https://preactjs.com/guide/v10/signals/)
   - maybe make use of [deep signal](https://github.com/luisherranz/deepsignal#arraylength) as well. because it lets you mutate and update the state array without copy
   - static cloudflare pages site 
-  - SPA like page navigation with [turbo](https://www.maxiferreira.com/blog/astro-turbo-persistent-islands/) (will be possible [natively](https://github.com/withastro/roadmap/issues/532) in the future)
+  - SPA like page navigation with [quicklink](https://github.com/GoogleChromeLabs/quicklink) (will be possible [natively](https://github.com/withastro/roadmap/issues/532) in the future)
 - ui lib: [panda](https://panda-css.com/)
 - image list: [egjs-infinitegrid](https://naver.github.io/egjs-infinitegrid/)
 - gallery items: [swiperjs](https://swiperjs.com/)
