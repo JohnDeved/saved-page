@@ -2,17 +2,51 @@
 import type { GetStaticPaths, InferGetStaticParamsType } from 'astro'
 import { stored } from '../stored.json'
 import Layout from '../../layouts/Layout.astro'
+import { css } from '../../../styled-system/css'
+import { container } from '../../../styled-system/patterns/container'
+import { getMediaUrls } from '../../helper/getMediaUrls'
 
 export const getStaticPaths = (() => {
   return stored.map((item) => ({ params: { id: item.id } }))
 }) satisfies GetStaticPaths
 
-type Params = InferGetStaticParamsType<typeof getStaticPaths>;
-
-const { id } = Astro.params as Params
+const { id } = Astro.params as InferGetStaticParamsType<typeof getStaticPaths>
 const item = stored.find((item) => item.id === id)!
+const media = getMediaUrls(item)
 ---
 
   <Layout>
-    page for item {item.id}
+    <div class={container({ h: '100dvh', display: 'flex', flexDirection: 'column', justifyContent: 'space-between' })}>
+      <div class={css({ display: 'flex', h: '80dvh', placeContent: 'center' })}>
+        <div>
+          <a href="/" class={css({ fontSize: '4xl' })}>
+            x
+          </a>
+          <div class={css({ height: '100%', p: '25px' })} style={{ background: `url(${media.pixelUrl})` }}>
+            <img
+              data-pixel={media.pixelUrl}
+              class={css({
+                height: '100%',
+                objectFit: 'contain',
+                boxShadow: 'xl',
+              })}
+              src={media.cdnUrl}
+              alt={item.title}
+            />
+          </div>
+          <a href={`https://www.reddit.com/${item.id}`} class={css({ fontSize: 'xl' })}>
+            [source]
+          </a>
+        </div>
+      </div>
+      <h1 style={{ textAlign: 'center' }}>{item.title}</h1>
+    </div>
+    <script>
+      import mediumZoom from 'https://esm.sh/medium-zoom@1.0.8'
+      const img = document.querySelector('img')
+      const  pixel = img.getAttribute('data-pixel')
+      mediumZoom('img', {
+        background: `url(${pixel})`,
+      })
+    </script>
   </Layout>

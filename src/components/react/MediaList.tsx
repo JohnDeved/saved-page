@@ -6,99 +6,81 @@ import type { Stored } from '../../pages/stored.json'
 import { css } from '../../../styled-system/css'
 import { LazyLoadImage, LazyLoadComponent } from 'react-lazy-load-image-component'
 import 'react-lazy-load-image-component/src/effects/opacity.css'
+import { getMediaUrls } from '../../helper/getMediaUrls'
 
 const MediaContainer = ({ item }: { item: Stored }) => {
-  const cdnUrl = Array.isArray(item.cdnUrl) ? item.cdnUrl[0] : item.cdnUrl
-  const mediaUrl = cdnUrl.replace('cdn.discordapp.com', 'media.discordapp.net')
-  const pixelUrl = `${mediaUrl}?format=jpeg&height=1&width=1`
-
-  // height or width is 1000px, whichever is smaller
-  const maxDimension = Math.min(1200, Math.max(item.height, item.width))
-  const thumbHeight = item.height > item.width ? maxDimension : Math.round(item.height * (maxDimension / item.width))
-  const thumbWidth = item.width > item.height ? maxDimension : Math.round(item.width * (maxDimension / item.height))
-
-  const thumbnailUrl = `${mediaUrl}?format=jpeg&height=${thumbHeight}&width=${thumbWidth}`
-
-  const isVideo = cdnUrl.endsWith('.mp4')
-  const isGif = cdnUrl.endsWith('.gif')
+  const { cdnUrl, mediaUrl, pixelUrl, thumbnailUrl, isVideo, isGif, isImage } = getMediaUrls(item)
 
   // base64 data uri with width and height and pixelUlr background
   const dataSrc = `data:image/svg+xml;base64,${btoa(`<svg xmlns="http://www.w3.org/2000/svg" width="${item.width}" height="${item.height}"></svg>`)}`
 
   return (
-    <Box pos="relative" className="group" style={{ backgroundImage: `url(${pixelUrl})` }}>
-      <img src={dataSrc} alt="preload"/>
-      <Box pos="absolute" top={0} left={0} width="100%" height="100%">
-        {isVideo
-          ? (
-            <LazyLoadComponent
-              threshold={0}
-              delayMethod="debounce"
-            >
-              <video
-                className={css({
-                  top: 0,
-                  left: 0,
-                  pos: 'absolute',
-                  objectFit: 'cover',
-                  objectPosition: 'center',
-                })}
-                src={cdnUrl}
-                muted
-                autoPlay
-                loop
+    <a href={`/stored/${item.id}`}>
+      <Box pos="relative" className="group" style={{ backgroundImage: `url(${pixelUrl})` }}>
+        <img src={dataSrc} alt="preload"/>
+        <Box pos="absolute" top={0} left={0} width="100%" height="100%">
+          {isVideo
+            ? (
+              <LazyLoadComponent
+                threshold={0}
+                delayMethod="debounce"
+              >
+                <video
+                  src={cdnUrl}
+                  muted
+                  autoPlay
+                  loop
+                />
+              </LazyLoadComponent>
+              )
+            : (
+              <LazyLoadImage
+                threshold={0}
+                delayMethod="debounce"
+                effect="opacity"
+                src={isGif ? mediaUrl : thumbnailUrl}
+                alt={item.title}
               />
-            </LazyLoadComponent>
-            )
-          : (
-            <LazyLoadImage
-              threshold={0}
-              delayMethod="debounce"
-              effect="opacity"
-              height="100%"
-              width="100%"
-              src={isGif ? mediaUrl : thumbnailUrl}
-              alt={item.title}
-            />
-            )}
-      </Box>
-      <Box
-        _groupHover={{
-          opacity: 1,
-        }}
-        opacity={0}
-        transition=".25s"
-        pos="absolute"
-        color="white"
-        bottom="0"
-        w="100%"
-        backdropFilter="blur(5px)"
-        padding="20px"
-        fontSize="xl"
-        border="3px solid rgba(255,255,255,.75)"
-        bg="rgba(0,0,0,.5)"
-        _hover={{ bg: 'rgba(0,0,0,.75)' }}
-        display="flex"
-        justifyContent="space-between"
-        alignItems="center"
-        gap="20px"
-        cursor="pointer"
-      >
-        <Box
-          _groupHover={{ transform: 'translateX(0)' }}
-          transform="translateY(5px)"
-          transition=".25s"
-        >{item.title}
+              )}
         </Box>
         <Box
-          fontSize="4xl"
-          _groupHover={{ transform: 'translateX(0)' }}
-          transform="translateX(-5px)"
+          _groupHover={{
+            opacity: 1,
+          }}
+          opacity={0}
           transition=".25s"
-        >→
+          pos="absolute"
+          color="white"
+          bottom="0"
+          w="100%"
+          backdropFilter="blur(5px)"
+          padding="20px"
+          fontSize="xl"
+          border="3px solid rgba(255,255,255,.75)"
+          bg="rgba(0,0,0,.5)"
+          _hover={{ bg: 'rgba(0,0,0,.75)' }}
+          display="flex"
+          justifyContent="space-between"
+          alignItems="center"
+          gap="20px"
+          cursor="pointer"
+        >
+          <Box
+            _groupHover={{ transform: 'translateX(0)' }}
+            transform="translateY(5px)"
+            transition=".25s"
+          >{item.title}
+          </Box>
+          <Box
+            fontSize="4xl"
+            _groupHover={{ transform: 'translateX(0)' }}
+            transform="translateX(-5px)"
+            transition=".25s"
+          >→
+          </Box>
         </Box>
       </Box>
-    </Box>
+    </a>
   )
 }
 
