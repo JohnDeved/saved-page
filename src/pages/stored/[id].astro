@@ -1,0 +1,18 @@
+---
+import type { GetStaticPaths, InferGetStaticParamsType } from 'astro'
+import { stored } from '../stored.json'
+import Layout from '../../layouts/Layout.astro'
+
+export const getStaticPaths = (() => {
+  return stored.map((item) => ({ params: { id: item.id } }))
+}) satisfies GetStaticPaths
+
+type Params = InferGetStaticParamsType<typeof getStaticPaths>;
+
+const { id } = Astro.params as Params
+const item = stored.find((item) => item.id === id)!
+---
+
+  <Layout>
+    page for item {item.id}
+  </Layout>
