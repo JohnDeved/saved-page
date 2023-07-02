@@ -27,6 +27,7 @@ const MediaContainer = ({ item }: { item: Stored }) => {
               >
                 <video
                   src={cdnUrl}
+                  preload="none"
                   muted
                   autoPlay
                   loop
