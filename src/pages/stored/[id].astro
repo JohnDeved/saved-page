@@ -4,9 +4,7 @@ import { stored } from '../stored.json'
 import Layout from '../../layouts/Layout.astro'
 import { getMediaUrls } from '../../helper/getMediaUrls'
 import { Box, Container, styled } from '../../../styled-system/react'
-const A = styled.a
-const H1 = styled.h1
-const Img = styled.img
+const { a: A, h1: H1, img: Img } = styled
 
 export const getStaticPaths = (() => {
   return stored.map((item) => ({ params: { id: item.id } }))
@@ -24,9 +22,8 @@ const media = getMediaUrls(item)
           <A href="/" fontSize="4xl">
             x
           </A>
-          <Box height="100%" p="25px" style={{ background: `url(${media.pixelUrl})` }}>
+          <Box className="pixel-bg" height="100%" p="25px" style={{ background: `url(${media.pixelUrl})` }}>
             <Img
-              data-pixel={media.pixelUrl}
               src={media.cdnUrl}
               alt={item.title}
               height="100%"
@@ -44,9 +41,9 @@ const media = getMediaUrls(item)
     <script>
       import mediumZoom from 'https://esm.sh/medium-zoom@1.0.8'
       const img = document.querySelector('img')
-      const pixel = img.getAttribute('data-pixel')
+      const pixel = document.querySelector('.pixel-bg').style.backgroundImage
       mediumZoom(img, {
-        background: `url(${pixel})`,
+        background: pixel,
       })
     </script>
   </Layout>
