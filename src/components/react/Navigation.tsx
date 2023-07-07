@@ -4,7 +4,6 @@ import { css } from '../../../styled-system/css'
 import { Box, styled } from '../../../styled-system/react'
 
 export const Navigation: React.FC = () => {
-  // needs 2 buttons: "new" and "random"
   const btn = css({
     color: 'white',
     fontSize: 'xl',

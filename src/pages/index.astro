@@ -4,10 +4,13 @@ import { MediaList } from '../components/react/MediaList'
 import { Navigation } from '../components/react/Navigation'
 import Layout from '../layouts/Layout.astro'
 import { stored } from './stored.json'
+
+const imgs = stored.filter(item => typeof item.cdnUrl === 'string' ? item.cdnUrl.endsWith('jpg') : false)
+const randomImg = imgs[Math.floor(Math.random() * imgs.length)].cdnUrl as string
 ---
 
   <Layout>
-    <Hero/>
+    <Hero img={randomImg}/>
     <Navigation/>
     <MediaList prefetchedItems={stored.slice(0, 10)} client:only="react"/>
   </Layout>
