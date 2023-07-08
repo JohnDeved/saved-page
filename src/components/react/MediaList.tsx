@@ -1,7 +1,7 @@
 /** @jsxImportSource react */
 import { MasonryInfiniteGrid } from '@egjs/react-infinitegrid'
 import { useState } from 'react'
-import { Box } from '../../../styled-system/react'
+import { Box, Container } from '../../../styled-system/react'
 import type { Stored } from '../../pages/stored.json'
 import { css } from '../../../styled-system/css'
 import { LazyLoadImage, LazyLoadComponent } from 'react-lazy-load-image-component'
@@ -99,8 +99,9 @@ export const MediaList: React.FC<{ prefetchedItems: Stored[] }> = ({ prefetchedI
     <MasonryInfiniteGrid
       percentage
       gap={5}
-      column={3}
+      column={0}
       threshold={5000}
+      // useRoundedSize
       onRequestAppend={async (e) => {
         e.wait()
         const items = await getItems()
@@ -111,6 +112,14 @@ export const MediaList: React.FC<{ prefetchedItems: Stored[] }> = ({ prefetchedI
       {items.map((item) => (
         <Box
           data-grid-groupkey={item.id}
+          className={css({
+            '@media (max-width: 935px)': {
+              w: '49.5%',
+            },
+            '@media (max-width: 460px)': {
+              w: '100%',
+            },
+          })}
           key={item.id}
           w="33%"
           display="flex"
