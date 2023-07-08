@@ -112,7 +112,7 @@ export const MediaList: React.FC<{ prefetchedItems: Stored[] }> = ({ prefetchedI
         <Box
           data-grid-groupkey={item.id}
           key={item.id}
-          w="33cqw"
+          w="33%"
           display="flex"
           alignItems="center"
           justifyContent="center"
