@@ -16,7 +16,7 @@ export const Hero: React.FC<{ img: string }> = ({ img }) => {
         backgroundImage: `linear-gradient( rgba(0, 0, 0, .5), rgba(0, 0, 0, 1) ), url(${img})`,
       }}
     >
-      <styled.h1 fontSize="8xl">Saved Scroller</styled.h1>
+      <styled.h1 fontSize={['4xl', '6xl', '8xl']}>Saved Scroller</styled.h1>
       {/* position arrow at bottom */}
       <Box
         position="absolute"
