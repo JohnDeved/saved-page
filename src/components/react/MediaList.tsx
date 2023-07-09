@@ -39,6 +39,7 @@ const MediaContainer = ({ item }: { item: Stored }) => {
                 threshold={0}
                 delayMethod="debounce"
                 effect="opacity"
+                // visibleByDefault={isGif}
                 src={isGif ? mediaUrl : thumbnailUrl}
                 alt={item.title}
               />
