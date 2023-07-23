@@ -27,4 +27,4 @@ as an experiment, focus on framework agnostic libs for max flexibility
 - something like [TanStack/bling](https://github.com/TanStack/bling) would integrate nicely into Astro. [Qwik does this](https://qwik.builder.io/docs/server$/).
   - maybe [telefunc](https://telefunc.com/) will work? https://github.com/withastro/astro/issues/5211
 - astro adapter for [Qwik Components](https://qwik.builder.io/docs/components/overview/) would be nice.
-- client-side router would be awesome https://github.com/orgs/withastro/projects/11/views/1?pane=issue&itemId=23749486
+- built-in [client-side](https://github.com/orgs/withastro/projects/11/views/1?pane=issue&itemId=23749486) router would be awesome
