@@ -13,6 +13,7 @@ export const getStaticPaths = (() => {
 const { id } = Astro.params as InferGetStaticParamsType<typeof getStaticPaths>
 const item = stored.find((item) => item.id === id)!
 const media = getMediaUrls(item)
+// make use of css aspect ratio? https://developer.mozilla.org/en-US/docs/Web/CSS/aspect-ratio
 ---
 
   <Layout>
