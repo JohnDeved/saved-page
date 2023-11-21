@@ -1,6 +1,7 @@
 import type { Stored } from '../pages/stored.json'
 
 export function getMediaUrls (item: Stored) {
+  // console.log('getMediaUrls', item)
   const cdnUrl = Array.isArray(item.cdnUrl) ? item.cdnUrl[0] : item.cdnUrl
   const mediaUrl = cdnUrl.replace('cdn.discordapp.com', 'media.discordapp.net')
   const pixelUrl = `${mediaUrl}?format=jpeg&height=1&width=1`
